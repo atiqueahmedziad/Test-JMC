@@ -305,15 +305,12 @@ let checkboxValues = [];
 
 // When user clicks on checkbox, we filter the results
 const handleChange = (checkbox) => {
-  let productListLength = document.querySelectorAll('input[type=checkbox]:checked').length;
-  
+  let productListLength = document.querySelectorAll('input[type=checkbox]:checked').length;  
   if(!productListLength) {
     content = [];
     document.getElementById("product-list").innerHTML = `${productListTemplate(dataSlice)}`;
   }
-
-  else if(checkbox.checked == true){
-    
+  else if(checkbox.checked == true){    
     let filterContent = dataSlice.filter(data => {
     	return data.categories ? (data.categories.some(eachCategory => {
     		if(eachCategory == checkbox.value){
@@ -321,7 +318,6 @@ const handleChange = (checkbox) => {
     		}
     	})) : null;
     });
-
     const filtercont = filterContent.map(eachResult => {
       // pushing filtered result to temporary array `content`
       content.push(eachResult);
@@ -335,11 +331,11 @@ const handleChange = (checkbox) => {
     document.getElementById("product-list").innerHTML = `${productListTemplate(content)}`;
   }
   else if(checkbox.checked == false){
-
     content = [];
     //console.log("button checked out ",content);
     
     let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+    
     //console.log("number of checked boxes ",checkboxes);
     
     checkboxValues = [];
@@ -348,7 +344,6 @@ const handleChange = (checkbox) => {
     }
 
     //console.log("Checkboxes values: ", checkboxValues);
-
     let filterContent = dataSlice.filter(data => {
         return data.categories ? (data.categories.some(eachCategory => {
           for(let j=0;j<checkboxValues.length;j++){
@@ -382,7 +377,6 @@ allCategories.forEach(x => countsObject[x] = (countsObject[x] || 0)+1 );
 
 // Checkbox template made with categories list
 const categoriesTemplate = categories => {
-
   let countValue = Object.values(countsObject);
 	return `
 		<ul class="filter-options">	
@@ -398,8 +392,7 @@ const categoriesTemplate = categories => {
 }
 
 // Product List Template
-const productListTemplate = (data) => {
-	
+const productListTemplate = (data) => {	
   return `
 		${data.map(product => {
 			return `
@@ -414,16 +407,3 @@ const productListTemplate = (data) => {
 
 document.getElementById("category-list").innerHTML = `${categoriesTemplate(category)}`;
 document.getElementById("product-list").innerHTML = `${productListTemplate(dataSlice)}`;
-
-
-
-
-
-
-
-
-
-
-
-
-
