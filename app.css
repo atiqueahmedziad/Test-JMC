@@ -39,10 +39,14 @@ main {
   font-size: 14px;
 }
 
-span.product-present {
+.product-present, #product-present {
+  float: right;
+  font-size: 12px;
+  clear: left;
+  margin-right: 15px;
   background: #f45f42;
   border-radius: 100%;
-  padding: 2px 8px;
+  padding: 3px 8px;
   color: #ffffff;
   margin-left: 4px;
 }
